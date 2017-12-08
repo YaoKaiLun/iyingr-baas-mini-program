@@ -1,0 +1,18 @@
+.cast-list {
+  width: 100%;
+  white-space: nowrap; 
+}
+
+.cast-item {
+  display: inline-block;
+  width: 320rpx;
+  height: 500rpx;
+}
+
+.cast-item-avatar {
+  width: 320rpx;
+}
+
+.cast-item-name {
+  text-align: center;
+}

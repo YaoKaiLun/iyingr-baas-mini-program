@@ -1,0 +1,35 @@
+.movie-item {
+  display: flex;
+  flex-direction: column;
+  padding: 15rpx;
+}
+
+.movie-item__row--clicked {
+  color: gray;
+}
+
+.movie-item__row {
+  display: flex;
+  flex-direction: row;
+}
+
+.movie-item__title {
+  flex: 1;
+}
+
+.movie-item__collect {
+  min-width: 70rpx;
+}
+
+.movie-item__collect__icon {
+  width: 35rpx;
+  height: 35rpx;
+}
+
+.movie-item__genres {
+
+}
+
+.load-more-btn {
+  border: 0 !important;
+}
