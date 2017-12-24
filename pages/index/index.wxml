@@ -1,22 +1,18 @@
-<swiper indicator-dots="{{true}}">
-  <swiper-item wx:for="{{comingSoonMovies}}" wx:for-item="movie" wx:key="id">
-    <image src="{{movie.poster}}" data-movie-id="{{movie.id}}" />
-  </swiper-item>
-</swiper>
-<view wx:for="{{movieList}}" wx:for-item="movie" wx:for-index="index" wx:key="id">
-  <view class="movie-item {{movie.isReaded ? 'movie-item__row--clicked' : ''}}">
-    <view class="movie-item__row">
-      <view class="movie-item__title" data-id="{{movie.id}}" data-index="{{index}}" bindtap="toDetailPage">
-        {{movie.title}}
+<view class="article-item" wx:for="{{articles}}" wx:for-item="article" wx:key="id">
+  <image class="article-cover" src="{{article.cover}}" data-id="{{article.id}}" bindtap="toDetailPage" />
+  <view class="article-desc {{article.isReaded ? 'article-item--clicked' : ''}}">
+    <view class="article-item__title">
+      <view class="article-item__title--left" data-id="{{article.id}}" bindtap="toDetailPage">
+        {{article.title}}
       </view>
-      <view class="movie-item__collect">
-        <image src="../../images/collect.png" class="movie-item__collect__icon" />
-        {{ movie.collect}}    
-      </view>  
+      <view class="article-item__title--right">
+        <image src="../../images/collect.png" class="collect-icon" />
+        {{ article.collect}}
+      </view>
     </view>
-    <view class="movie-item__genres">{{movie.genres}}</view>
+    <view>{{article.description}}</view>
   </view>
 </view>
-<button class="load-more-btn" type="default" plain="{{true}}" loading="{{loading}}" bindtap="loadMore">
+<button class="load-more-btn" type="default" plain="{{true}}" loading="{{loading}}" bindtap="getArticles">
   {{loadMoreText}}
 </button>

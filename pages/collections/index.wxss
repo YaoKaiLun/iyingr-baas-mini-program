@@ -1,1 +1,29 @@
-/* pages/collections.wxss */
+.article-item {
+  margin: 0 0 40rpx;
+}
+
+.article-cover {
+  width: 100%;
+}
+
+.article-desc {
+  margin: 0 20rpx;
+}
+
+.article-item__title {
+  display: flex;
+  flex-direction: row;
+}
+
+.article-item__title--left {
+  flex: 1;
+}
+
+.article-item__collect--right {
+  min-width: 70rpx;
+}
+
+.collect-icon {
+  width: 35rpx;
+  height: 35rpx;
+}

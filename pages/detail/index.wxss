@@ -1,18 +1,45 @@
-.cast-list {
-  width: 100%;
-  white-space: nowrap; 
+page {
+  padding: 0 15rpx;
+  box-sizing: border-box;
 }
 
-.cast-item {
-  display: inline-block;
-  width: 320rpx;
-  height: 500rpx;
-}
-
-.cast-item-avatar {
-  width: 320rpx;
-}
-
-.cast-item-name {
+.article-title {
   text-align: center;
+  font-size: 40rpx;
+  margin: 10rpx 0;
+}
+
+.article-desc {
+  margin: 5rpx 20rpx 5rpx 0;
+  color: gray;
+  font-size: 25rpx;
+  text-align: right
+}
+
+.article-content {
+  margin: 30rpx 10rpx 10rpx 10rpx;
+  font-size: 35rpx;
+  line-height: 50rpx;
+  letter-spacing: 4rpx;
+  text-align: justify;
+}
+
+.article-collect-btn {
+  text-align: center;
+  margin: 10rpx 0 100rpx 0;
+}
+
+.article-collect-btn button {
+  width: 200rpx;
+}
+
+.article-share-btn {
+  position: fixed;
+  right: 30rpx;
+  bottom: 30rpx;
+  width: 70rpx;
+  height: 70rpx;
+  background-image: url("https://cloud-minapp-1131.cloud.ifanrusercontent.com/1eNFg1HrAVjWkrNQ.png");
+  background-size: 70rpx 70rpx;
+  border: 0 !important;
 }

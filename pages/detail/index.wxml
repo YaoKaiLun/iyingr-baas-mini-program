@@ -1,22 +1,7 @@
-<image src="{{detail.poster}}" />
-
-<view>{{detail.title}}</view>
-<view>{{detail.year}}</view>
-<view>{{detail.directors}}</view>
-<view>{{detail.genres}}</view>
-<view>{{detail.countries}}</view>
-
-<scroll-view scroll-x class="cast-list">
-  <block wx:for="{{detail.casts}}" wx:for-item="cast" wx:key="id">
-    <view class="cast-item">
-      <image class="cast-item-avatar" src="{{cast.avatar}}" />
-      <view class="cast-item-name">{{cast.name}}</view>
-    </view>
-  </block>
-</scroll-view>
-
-<view>{{detail.summary}}</view>
-<view bindtap="toggleCollect">
-  <block wx:if="{{isCollected}}">已收藏</block>
-  <block wx:else>收藏</block>
+<view class="article-title">{{article.title}}</view>
+<view class="article-desc">{{article.created_at}}</view>
+<rich-text class="article-content" nodes="{{article.content}}"></rich-text>
+<view class="article-collect-btn">
+  <button bindtap="toggleCollection" type="primary">{{collectText}}</button>
 </view>
+<button class="article-share-btn" plain="{{true}}" open-type="share" />

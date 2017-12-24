@@ -1,33 +1,35 @@
-.movie-item {
-  display: flex;
-  flex-direction: column;
-  padding: 15rpx;
+.article-item {
+  margin: 0 0 40rpx;
 }
 
-.movie-item__row--clicked {
-  color: gray;
+.article-cover {
+  width: 100%;
 }
 
-.movie-item__row {
+.article-desc {
+  margin: 0 20rpx;
+}
+
+.article-item__title {
   display: flex;
   flex-direction: row;
 }
 
-.movie-item__title {
+.article-item--clicked {
+  color: gray;
+}
+
+.article-item__title--left {
   flex: 1;
 }
 
-.movie-item__collect {
+.article-item__collect--right {
   min-width: 70rpx;
 }
 
-.movie-item__collect__icon {
+.collect-icon {
   width: 35rpx;
   height: 35rpx;
-}
-
-.movie-item__genres {
-
 }
 
 .load-more-btn {

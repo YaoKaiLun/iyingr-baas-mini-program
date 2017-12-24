@@ -1,2 +1,15 @@
-<!--pages/collections.wxml-->
-<text>pages/collections.wxml</text>
+<view class="article-item" wx:for="{{articles}}" wx:for-item="article" wx:for-index="index" wx:key="id">
+  <image class="article-cover" src="{{article.cover}}" data-id="{{article.id}}" data-index="{{index}}" bindtap="toDetailPage"></image>
+  <view class="article-desc">
+    <view class="article-item__title">
+      <view class="article-item__title--left" data-id="{{article.id}}" data-index="{{index}}" bindtap="toDetailPage">
+        {{article.title}}
+      </view>
+      <view class="article-item__title--right">
+        <image src="../../images/collect.png" class="collect-icon" />
+        {{ article.collect}}    
+      </view>  
+    </view>
+    <view>{{article.description}}</view>
+  </view>
+</view>
