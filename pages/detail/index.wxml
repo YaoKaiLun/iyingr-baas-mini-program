@@ -1,7 +1,7 @@
 <view class="article-title">{{article.title}}</view>
 <view class="article-desc">{{article.created_at}}</view>
-<rich-text class="article-content" nodes="{{article.content}}"></rich-text>
+<rich-text class="article-content" nodes="{{article.content}}" />
 <view class="article-collect-btn">
-  <button bindtap="toggleCollection" type="primary">{{collectText}}</button>
+  <button bindtap="toggleCollectionStatus" type="primary">{{collectText}}</button>
 </view>
 <button class="article-share-btn" plain="{{true}}" open-type="share" />

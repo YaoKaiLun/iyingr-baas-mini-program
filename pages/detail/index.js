@@ -1,3 +1,4 @@
+const contentGroupID = 348
 let Collection = new wx.BaaS.TableObject(3965)
 let id = ''
 
@@ -10,7 +11,7 @@ Page({
   onLoad: function(option) {
     id = option.id
     this.getArticle(id)
-    this.queryCollection().then((res) => {
+    this.queryCollectionRecord().then((res) => {
       let records = res.data.objects
       if (records.length < 1) {
         this.setData({collectText: '收藏'})
@@ -21,7 +22,8 @@ Page({
   },
 
   getArticle: function(id) {
-    wx.BaaS.getContent({richTextID: id}).then(res => {
+    let MyContentGroup = new wx.BaaS.ContentGroup(contentGroupID)
+    MyContentGroup.getContent(id).then(res => {
       let myDate = new Date(res.data.created_at * 1000)
       let formattedDate = `${myDate.getFullYear()}-${myDate.getMonth()}-${myDate.getDay()}`
       res.data.created_at = formattedDate
@@ -46,7 +48,7 @@ Page({
     }
   },
   
-  queryCollection: function () {
+  queryCollectionRecord: function () {
     let userID = wx.BaaS.storage.get('uid')
     let query = new wx.BaaS.Query()
     query.compare('user_id', '=', userID)
@@ -54,8 +56,8 @@ Page({
     return Collection.setQuery(query).find()
   },
 
-  toggleCollection: function () {
-    this.queryCollection().then((res) => {
+  toggleCollectionStatus: function () {
+    this.queryCollectionRecord().then((res) => {
       let records = res.data.objects
       if (records.length < 1) {
         let collection = Collection.create()
