@@ -1,3 +1,11 @@
+<view class="category">
+  <view class="category-item  {{currentCategory == 'all' ? 'category-item--clicked' : ''}}" data-id="all" bindtap="toggleCategory">全部</view>
+  <block wx:for="{{categories}}" wx:for-item="category" wx:key="id">
+    <view class="category-item {{currentCategory == category.id ? 'category-item--clicked' : ''}}" data-id="{{category.id}}" bindtap="toggleCategory">
+      {{category.name}}
+    </view>
+  </block>
+</view>
 <view class="article-item" wx:for="{{articles}}" wx:for-item="article" wx:key="id">
   <image class="article-cover" src="{{article.cover}}" data-id="{{article.id}}" bindtap="toDetailPage" />
   <view class="article-desc {{article.isReaded ? 'article-item--clicked' : ''}}">
@@ -13,6 +21,6 @@
     <view>{{article.description}}</view>
   </view>
 </view>
-<button class="load-more-btn" type="default" plain="{{true}}" loading="{{loading}}" bindtap="getArticles">
+<button class="load-more-btn" type="default" plain="{{true}}" loading="{{loading}}" bindtap="loadMore">
   {{loadMoreText}}
 </button>

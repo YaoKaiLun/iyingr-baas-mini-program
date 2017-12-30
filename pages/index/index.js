@@ -1,4 +1,4 @@
-let contentGroupID = 348
+const MyContentGroup = new wx.BaaS.ContentGroup(348)
 let isEnd = false
 let pageLimit = 4
 let pageOffset = 0
@@ -8,24 +8,61 @@ Page({
   data: {
     articles: [],
     loading: false,
-    loadMoreText: '加载更多'
+    loadMoreText: '加载更多',
+    categories: [],
+    currentCategory: 'all',
   },
 
   onLoad: function() {
+    this.getCategories()
     this.getArticles()
   },
 
-  getArticles: function() {
+  getCategories: function() {
+    MyContentGroup.getCategoryList().then(res => {
+      this.setData({
+        categories: res.data.objects
+      })
+    })
+  },
+
+  toggleCategory: function(e) {
+    let id = e.currentTarget.dataset.id
+    this.setData({
+      currentCategory: id,
+      loadMoreText: '加载更多',
+    })
+    pageOffset = 0
+    isEnd = false
+    if (id === 'all') {
+      this.getArticles()
+    } else {
+      this.getArticles(this.data.currentCategory)
+    }
+  },
+
+  loadMore: function (event) {
+    if (this.data.currentCategory === 'all') {
+      this.getArticles()
+    } else {
+      this.getArticles(this.data.currentCategory)
+    }
+  },
+
+  getArticles: function(category) {
     if (!isEnd && !this.data.loading) {
       this.setData({loading: true})
-      let params = {
-        contentGroupID: contentGroupID,
-        limit: pageLimit,
-        offset: pageOffset
+      let query = new wx.BaaS.Query()
+      if (category) {
+        query.arrayContains('categories', [category])
       }
-      wx.BaaS.getContentList(params).then(res => {
+      MyContentGroup.setQuery(query).limit(pageLimit).offset(pageOffset).find().then(res => {
         let data = res.data.objects
-        let oldArticles = Object.assign(this.data.articles)
+        let oldArticles = []
+
+        if (pageOffset !== 0) {
+          oldArticles = Object.assign(this.data.articles)
+        }
 
         this.setData({
           articles: oldArticles.concat(this.addReadStatus(data)),
@@ -77,7 +114,7 @@ Page({
       } else {
         article.isReaded = false
       }
-      newArticles.push(movie)
+      newArticles.push(article)
     }
 
     return newArticles
