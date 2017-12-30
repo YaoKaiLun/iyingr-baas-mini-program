@@ -1,3 +1,14 @@
+<view class='user-info'>
+  <view class="user-info__left">
+    <view class="user-info__left__name">{{currentUserInfo.nickName}}</view>
+    <view class="user-info__left__data">
+      收藏数 {{currentUserInfo.collectionAmount}}
+    </view>
+  </view>
+  <view class="user-info__right">
+    <image src="{{currentUserInfo.avatarUrl}}" />
+  </view>
+</view>
 <view class="article-item" wx:for="{{articles}}" wx:for-item="article" wx:for-index="index" wx:key="id">
   <image class="article-cover" src="{{article.cover}}" data-id="{{article.id}}" data-index="{{index}}" bindtap="toDetailPage"></image>
   <view class="article-desc">
