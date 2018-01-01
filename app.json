@@ -14,15 +14,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
+        "text": "首页",
         "iconPath": "images/home.png",
-        "selectedIconPath": "images/home-actived.png",
-        "text": "首页"
+        "selectedIconPath": "images/home-actived.png"
       },
       {
         "pagePath": "pages/collections/index",
+        "text": "收藏夹",
         "iconPath": "images/collection.png",
-        "selectedIconPath": "images/collection-actived.png",
-        "text": "收藏夹"
+        "selectedIconPath": "images/collection-actived.png"
       }
     ]
   }

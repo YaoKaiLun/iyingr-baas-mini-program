@@ -38,28 +38,14 @@
   margin: 0 0 40rpx;
 }
 
-.article-cover {
+.article-item__cover {
   width: 100%;
 }
 
-.article-desc {
+.article-item__desc {
   margin: 0 20rpx;
 }
 
-.article-item__title {
-  display: flex;
-  flex-direction: row;
-}
-
-.article-item__title--left {
-  flex: 1;
-}
-
-.article-item__collect--right {
-  min-width: 70rpx;
-}
-
-.collect-icon {
-  width: 35rpx;
-  height: 35rpx;
+.article-item__desc__digest {
+  font-size: 27rpx;
 }

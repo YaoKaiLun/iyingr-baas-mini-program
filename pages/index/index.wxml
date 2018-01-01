@@ -7,18 +7,10 @@
   </block>
 </view>
 <view class="article-item" wx:for="{{articles}}" wx:for-item="article" wx:key="id">
-  <image class="article-cover" src="{{article.cover}}" data-id="{{article.id}}" bindtap="toDetailPage" />
-  <view class="article-desc {{article.isReaded ? 'article-item--clicked' : ''}}">
-    <view class="article-item__title">
-      <view class="article-item__title--left" data-id="{{article.id}}" bindtap="toDetailPage">
-        {{article.title}}
-      </view>
-      <view class="article-item__title--right">
-        <image src="../../images/collect.png" class="collect-icon" />
-        {{ article.collect}}
-      </view>
-    </view>
-    <view>{{article.description}}</view>
+  <image class="article-item__cover" src="{{article.cover}}" data-id="{{article.id}}" bindtap="toDetailPage" />
+  <view class="article-item__desc {{article.isReaded ? 'article-item--clicked' : ''}}">
+    <view data-id="{{article.id}}" bindtap="toDetailPage">{{article.title}}</view>
+    <view class="article-item__desc__digest">{{article.description}}</view>
   </view>
 </view>
 <button class="load-more-btn" type="default" plain="{{true}}" loading="{{loading}}" bindtap="loadMore">
