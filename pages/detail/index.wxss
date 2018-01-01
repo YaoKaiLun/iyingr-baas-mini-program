@@ -26,11 +26,13 @@ page {
 
 .article-collect-btn {
   text-align: center;
-  margin: 10rpx 0 100rpx 0;
+  margin: 30rpx 0 100rpx 0;
 }
 
 .article-collect-btn button {
-  width: 200rpx;
+  width:200rpx;
+  height:80rpx;
+  line-height:80rpx;
 }
 
 .article-share-btn {

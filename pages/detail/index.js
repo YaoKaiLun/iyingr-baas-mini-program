@@ -1,11 +1,14 @@
-const contentGroupID = 348
+const wxParser = require('../../wxParser/index')
+let MyContentGroup = new wx.BaaS.ContentGroup(348)
 let Collection = new wx.BaaS.TableObject(3965)
 let id = ''
+const COLLECTED_TEXT = "取消收藏"
+const UNCOLLECTED_TEXT = "收藏"
 
 Page({
   data: {
     article: {},
-    collectText: '收藏'
+    collectText: COLLECTED_TEXT
   },
 
   onLoad: function(option) {
@@ -14,21 +17,26 @@ Page({
     this.queryCollectionRecord().then((res) => {
       let records = res.data.objects
       if (records.length < 1) {
-        this.setData({collectText: '收藏'})
+        this.setData({ collectText: COLLECTED_TEXT})
       } else {
-        this.setData({collectText: '取消收藏'})
+        this.setData({ collectText: UNCOLLECTED_TEXT})
       }
     })
   },
 
   getArticle: function(id) {
-    let MyContentGroup = new wx.BaaS.ContentGroup(contentGroupID)
     MyContentGroup.getContent(id).then(res => {
       let myDate = new Date(res.data.created_at * 1000)
       let formattedDate = `${myDate.getFullYear()}-${myDate.getMonth()}-${myDate.getDay()}`
       res.data.created_at = formattedDate
       this.setData({
         article: res.data
+      })
+      wxParser.parse({
+        bind: 'richText',
+        html: res.data.content,
+        target: this,
+        enablePreviewImage: true,
       })
     })
   },
@@ -39,12 +47,6 @@ Page({
       title: article.title,
       imageUrl: article.poster,
       path: `pages/detail/index?id=${id}`,
-      success: function (res) {
-        // 转发成功
-      },
-      fail: function (res) {
-        // 转发失败
-      }
     }
   },
   
@@ -69,7 +71,7 @@ Page({
             icon: 'success',
             duration: 2000
           })
-          this.setData({collectText: '取消收藏'})
+          this.setData({collectText: UNCOLLECTED_TEXT})
         })
       } else {
         Collection.delete(records[0].id).then(() => {
@@ -78,7 +80,7 @@ Page({
             icon: 'success',
             duration: 2000
           })
-          this.setData({collectText: '收藏'})
+          this.setData({collectText: COLLECTED_TEXT})
         })
       }
     })

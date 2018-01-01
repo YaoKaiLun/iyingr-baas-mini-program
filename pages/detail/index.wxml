@@ -1,6 +1,12 @@
+<import src="../../wxParser/index.wxml"/>
+
 <view class="article-title">{{article.title}}</view>
 <view class="article-desc">{{article.created_at}}</view>
-<rich-text class="article-content" nodes="{{article.content}}" />
+<!-- <view class="article-content">{{article.content}}</view> -->
+<!-- <rich-text class="article-content" nodes="{{article.content}}" />  -->
+<view class="wxParser article-content">
+  <template is="wxParser" data="{{wxParserData:richText.nodes}}"/>
+</view> 
 <view class="article-collect-btn">
   <button bindtap="toggleCollectionStatus" type="primary">{{collectText}}</button>
 </view>
