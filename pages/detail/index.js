@@ -17,9 +17,9 @@ Page({
     this.queryCollectionRecord().then((res) => {
       let records = res.data.objects
       if (records.length < 1) {
-        this.setData({ collectText: COLLECTED_TEXT})
-      } else {
         this.setData({ collectText: UNCOLLECTED_TEXT})
+      } else {
+        this.setData({ collectText: COLLECTED_TEXT})
       }
     })
   },
@@ -71,7 +71,7 @@ Page({
             icon: 'success',
             duration: 2000
           })
-          this.setData({collectText: UNCOLLECTED_TEXT})
+          this.setData({collectText: COLLECTED_TEXT})
         })
       } else {
         Collection.delete(records[0].id).then(() => {
@@ -80,7 +80,7 @@ Page({
             icon: 'success',
             duration: 2000
           })
-          this.setData({collectText: COLLECTED_TEXT})
+          this.setData({collectText: UNCOLLECTED_TEXT})
         })
       }
     })
